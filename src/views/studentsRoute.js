@@ -1,4 +1,5 @@
 import express from 'express'
+import studentController from '../controllers/studentController.js' // Import the student controller
 const Router = express.Router()
 
 /**
@@ -7,25 +8,20 @@ const Router = express.Router()
  * 'app.use' to define the route path in the main file.
  */
 
-// Get the student route
-Router.get('/', (req, res) => {
-  res.json({ msg: 'Student consultation' })
-})
+// Get the student route by using the controller
+Router.get('/', studentController.consult)
 
-// Post the student route
-Router.post('/', (req, res) => {
-  res.json({ msg: 'Student post' })
-})
+// Post the student route by using the controller
+Router.post('/', studentController.loggin)
 
-// Put the student route
-Router.put('/', (req, res) => {
-  res.json({ msg: 'Student update' })
-})
-
-// Delete the student route
-Router.delete('/', (req, res) => {
-  res.json({ msg: 'Student delete' })
-})
+// All the routes that have the same path will be grouped in this case '/:id'
+Router.route('/:id')
+  // Get the student detail route by using the controller
+  .get(studentController.consultDetail)
+  // Put the student update route by using the controller
+  .put(studentController.update)
+  // Delete the student route by using the controller
+  .delete(studentController.delete)
 
 // Export the router
 export default Router
