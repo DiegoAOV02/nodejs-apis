@@ -2,6 +2,9 @@
  * @api {get} /students Consult the students
  */
 
+// Import the database connection
+import db from '../database/db.js'
+
 class StudentController  {
   constructor() {
 

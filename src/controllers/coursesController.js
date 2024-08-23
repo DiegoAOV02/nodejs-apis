@@ -2,6 +2,9 @@
  * @api {get} /courses Consult the courses
  */
 
+// Import the database connection
+import db from '../database/db.js'
+
 class CoursesController {
   constructor() {
 
@@ -14,7 +17,9 @@ class CoursesController {
 
   // Method to consult the courses detail
   consultDetail (req, res) {
-    res.json({ msg: 'Courses detail consultation from class' })
+    // Get the id from the request parameters
+    const { id } = req.params
+    res.json({ msg: `Course ${id} detail consultation from class` })
   }
 
   // Method to loggin the courses

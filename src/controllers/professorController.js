@@ -2,6 +2,9 @@
  * @api {get} /professor Consultar Professores
  */
 
+// Import the database connection
+import db from '../database/db.js'
+
 class ProfessorController {
   constructor() {
 
